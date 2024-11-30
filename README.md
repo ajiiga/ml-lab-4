@@ -2,39 +2,46 @@
 
 ## Setup environment
 
-1. Поднимем minio в контейнере и установим зависимости:
+1. Создайте `.env` файл
+```shell
+MINIO_ENDPOINT=localhost:9000
+MINIO_ROOT_USER=admin
+MINIO_ROOT_PASSWORD=Admin12345678
+WANDB_API_KEY= 
+```
+2. Поднимем minio в контейнере и установим зависимости:
  ```bash
    make setup
    ```
 
-2. Создадим бакет и загрузим titanic.csv в minio:
+3. Создадим бакет и загрузим titanic.csv в minio:
  ```bash
    make upload-data
    ```
 
-3. Обработаем titanic.csv и положим обработанный titanic_processed.csv в minio:
+4. Обработаем titanic.csv и положим обработанный titanic_processed.csv в minio:
  ```bash
    make process-data
    ```
 
-4. В .env нужно добавить API ключ w&b
+5. В .env нужно добавить API ключ w&b
 
-5. Сбилдим образ для обучения 
+6. Сбилдим образ для обучения 
 ```bash
    make build-trainer-image
 ```
 
-6. Скачаем обработанные данные
+7. Скачаем обработанные данные
 ```bash 
    make download processed-data
 ```
 
-7. Запустим эксперементы 
+8. Запустим эксперементы 
 ```bash
    make run-experiments
 ```
 
-8. Загрузим модели эксперементов в хранилище 
+9. Загрузим модели эксперементов в хранилище 
 ```bash
    make upload-results
 ```
